@@ -1,0 +1,42 @@
+#RULE-BASED
+
+print("=" * 40)
+print("      RULE-BASED NLP CHATBOT")
+print("=" * 40)
+
+while True:
+    user = input("\nYou: ").lower()
+
+    if user == "hello":
+        print("Bot: Hello! Welcome.")
+    elif user == "hi":
+        print("Bot: Hi! How are you?")
+    elif user == "how are you":
+        print("Bot: I am doing great.")
+    elif user == "what is your name":
+        print("Bot: I am a Rule-Based NLP Bot.")
+    elif user == "python":
+        print("Bot: Python is a programming language.")
+    elif user == "bye":
+        print("Bot: Goodbye!")
+        break
+    else:
+        print("Bot: Sorry, I don't understand.")
+
+
+#MODERN
+
+from textblob import TextBlob
+
+text = input("Enter a sentence: ")
+
+analysis = TextBlob(text)
+
+print("\nPolarity:", analysis.sentiment.polarity)
+
+if analysis.sentiment.polarity > 0:
+    print("Sentiment: Positive 😊")
+elif analysis.sentiment.polarity < 0:
+    print("Sentiment: Negative 😞")
+else:
+    print("Sentiment: Neutral 😐")
