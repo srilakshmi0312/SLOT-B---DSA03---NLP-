@@ -1,0 +1,44 @@
+def check_string(word):
+    state = "q0"
+    route = ["q0"]
+
+    for letter in word:
+
+        if state == "q0":
+            if letter == "a":
+                state = "q1"
+            else:
+                state = "q0"
+
+        elif state == "q1":
+            if letter == "a":
+                state = "q1"
+            else:
+                state = "q2"
+
+        elif state == "q2":
+            if letter == "a":
+                state = "q1"
+            else:
+                state = "q0"
+
+        route.append(state)
+
+    print("Transition Path:")
+    print(" -> ".join(route))
+
+    if state == "q2":
+        print("Accepted")
+    else:
+        print("Rejected")
+
+
+while True:
+
+    text = input("Enter String: ")
+    check_string(text)
+
+    option = input("Continue (Y/N): ")
+
+    if option.lower() != "y":
+        break
