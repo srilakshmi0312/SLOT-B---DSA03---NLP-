@@ -1,0 +1,26 @@
+import re
+
+email = input("Enter Email: ")
+password = input("Enter Password: ")
+mobile = input("Enter Mobile Number: ")
+
+email_rule = "^[A-Za-z][A-Za-z0-9._]*@[A-Za-z]+\\.(com|org|edu|net|in)$"
+password_rule = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%&!])[A-Za-z\\d@#$%&!]{8,}$"
+mobile_rule = "^[6-9][0-9]{9}$"
+
+print()
+
+if re.fullmatch(email_rule, email):
+    print("Valid Email")
+else:
+    print("Invalid Email")
+
+if re.fullmatch(password_rule, password):
+    print("Strong Password")
+else:
+    print("Weak Password")
+
+if re.fullmatch(mobile_rule, mobile):
+    print("Valid Mobile Number")
+else:
+    print("Invalid Mobile Number")
