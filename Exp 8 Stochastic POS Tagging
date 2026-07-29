@@ -1,0 +1,21 @@
+import random
+
+tag_dict = {
+    "I": ["PRP"],
+    "love": ["VBP", "NN"],
+    "python": ["NN"],
+    "dogs": ["NNS"],
+    "run": ["VB", "NN"],
+    "fast": ["RB", "JJ"]
+}
+
+sentence = input("Enter a sentence: ").split()
+
+print("POS Tags:")
+
+for word in sentence:
+    if word in tag_dict:
+        tag = random.choice(tag_dict[word])
+    else:
+        tag = "NN"
+    print(word, ":", tag)
