@@ -1,0 +1,21 @@
+sentence = input("Enter a sentence: ").split()
+
+tags = []
+
+for word in sentence:
+    if word.endswith("ing"):
+        tag = "VBG"
+    elif word.endswith("ed"):
+        tag = "VBD"
+    elif word[0].isupper():
+        tag = "NNP"
+    elif word.isdigit():
+        tag = "CD"
+    else:
+        tag = "NN"
+    tags.append((word, tag))
+
+print("Tagged Sentence:")
+
+for word, tag in tags:
+    print(word, ":", tag)
