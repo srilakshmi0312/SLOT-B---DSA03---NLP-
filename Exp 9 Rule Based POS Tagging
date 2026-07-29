@@ -1,0 +1,19 @@
+import nltk
+
+patterns = [
+    (r'.*ing$', 'VBG'),
+    (r'.*ed$', 'VBD'),
+    (r'.*es$', 'VBZ'),
+    (r'.*ould$', 'MD'),
+    (r'.*\'s$', 'NN$'),
+    (r'.*s$', 'NNS'),
+    (r'^-?[0-9]+(\.[0-9]+)?$', 'CD'),
+    (r'.*', 'NN')
+]
+
+tagger = nltk.RegexpTagger(patterns)
+
+sentence = input("Enter a sentence: ").split()
+
+print("POS Tags:")
+print(tagger.tag(sentence))
