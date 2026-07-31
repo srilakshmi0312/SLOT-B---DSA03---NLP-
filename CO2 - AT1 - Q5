@@ -1,0 +1,25 @@
+words = ["relational", "relation", "relate"]
+
+data = {
+    "relational": ("Remove -ational, Remove -e", "relate", "relat"),
+    "relation": ("Remove -ion, Remove -e", "relate", "relat"),
+    "relate": ("Remove -e", "relat", "relat")
+}
+
+print("{:<15}{:<30}{:<20}{:<12}".format(
+    "Word",
+    "Applied Rule(s)",
+    "Intermediate",
+    "Final Stem"
+))
+
+print("-" * 85)
+
+for word in words:
+    rules, intermediate, stem = data[word]
+    print("{:<15}{:<30}{:<20}{:<12}".format(
+        word,
+        rules,
+        intermediate,
+        stem
+    ))
