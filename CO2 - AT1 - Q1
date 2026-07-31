@@ -1,0 +1,23 @@
+words = ["connected", "connecting", "connection"]
+
+data = {
+    "connected": ("connect", "ed", "Inflectional", "connect"),
+    "connecting": ("connect", "ing", "Inflectional", "connect"),
+    "connection": ("connect", "ion", "Derivational", "connect")
+}
+
+print("{:<15}{:<12}{:<10}{:<18}{:<15}".format(
+    "Word", "Root", "Suffix", "Type", "Normalized"
+))
+
+print("-" * 70)
+
+for word in words:
+    root, suffix, morph_type, normalized = data[word]
+    print("{:<15}{:<12}{:<10}{:<18}{:<15}".format(
+        word,
+        root,
+        suffix,
+        morph_type,
+        normalized
+    ))
