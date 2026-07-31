@@ -1,0 +1,27 @@
+words = ["played", "player", "playing"]
+
+data = {
+    "played": ("play", "ed", "Inflectional", "play"),
+    "player": ("play", "er", "Derivational", "play"),
+    "playing": ("play", "ing", "Inflectional", "play")
+}
+
+print("{:<12}{:<12}{:<15}{:<18}{:<15}".format(
+    "Word",
+    "Stem",
+    "Removed Affix",
+    "Type",
+    "Normalized"
+))
+
+print("-" * 75)
+
+for word in words:
+    stem, affix, trans_type, normalized = data[word]
+    print("{:<12}{:<12}{:<15}{:<18}{:<15}".format(
+        word,
+        stem,
+        affix,
+        trans_type,
+        normalized
+    ))
