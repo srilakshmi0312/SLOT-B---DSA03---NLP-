@@ -1,0 +1,27 @@
+words = ["writes", "writing", "written"]
+
+data = {
+    "writes": ("S0 → S1 → S2 → S4", "write", "Regular", "write"),
+    "writing": ("S0 → S1 → S2 → S4", "write", "Regular", "write"),
+    "written": ("S0 → S1 → S3 → S4", "write", "Irregular", "write")
+}
+
+print("{:<12}{:<22}{:<10}{:<12}{:<12}".format(
+    "Word",
+    "State Transition",
+    "Root",
+    "Pattern",
+    "Normalized"
+))
+
+print("-" * 75)
+
+for word in words:
+    transition, root, pattern, normalized = data[word]
+    print("{:<12}{:<22}{:<10}{:<12}{:<12}".format(
+        word,
+        transition,
+        root,
+        pattern,
+        normalized
+    ))
