@@ -1,0 +1,33 @@
+words = ["disagree", "agreement", "agreeable"]
+
+print("Morphological Parsing Report")
+print("-" * 100)
+print("{:<15}{:<10}{:<12}{:<10}{:<18}{:<20}{:<15}".format(
+    "Word", "Prefix", "Root", "Suffix",
+    "Transformation", "Meaning", "Normalized"))
+
+for word in words:
+
+    if word == "disagree":
+        prefix = "dis"
+        root = "agree"
+        suffix = "-"
+        trans = "Derivational"
+        meaning = "Opposite meaning"
+
+    elif word == "agreement":
+        prefix = "-"
+        root = "agree"
+        suffix = "-ment"
+        trans = "Derivational"
+        meaning = "State of agreeing"
+
+    elif word == "agreeable":
+        prefix = "-"
+        root = "agree"
+        suffix = "-able"
+        trans = "Derivational"
+        meaning = "Able/Willing"
+
+    print("{:<15}{:<10}{:<12}{:<10}{:<18}{:<20}{:<15}".format(
+        word, prefix, root, suffix, trans, meaning, root))
