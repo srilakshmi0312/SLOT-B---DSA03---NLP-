@@ -1,0 +1,26 @@
+words = ["govern", "government", "governance"]
+
+print("Normalization Report")
+print("-" * 90)
+print("{:<15}{:<12}{:<15}{:<18}{:<15}".format(
+    "Word", "Root", "Affix", "Derivational Level", "Normalized"))
+
+for word in words:
+
+    if word == "govern":
+        root = "govern"
+        affix = "-"
+        level = "Level 0"
+
+    elif word == "government":
+        root = "govern"
+        affix = "-ment"
+        level = "Level 1"
+
+    elif word == "governance":
+        root = "govern"
+        affix = "-ance"
+        level = "Level 1"
+
+    print("{:<15}{:<12}{:<15}{:<18}{:<15}".format(
+        word, root, affix, level, root))
