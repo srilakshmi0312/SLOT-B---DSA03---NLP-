@@ -1,0 +1,27 @@
+words = ["create", "creates", "creating"]
+
+print("Inflectional Morphology Report")
+print("-" * 90)
+print("{:<15}{:<12}{:<25}{:<12}{:<15}".format(
+    "Word", "Suffix", "Grammatical Category",
+    "Root", "Normalized"))
+
+for word in words:
+
+    if word == "create":
+        suffix = "-"
+        category = "Base Form"
+        root = "create"
+
+    elif word == "creates":
+        suffix = "-s"
+        category = "3rd Person Singular"
+        root = "create"
+
+    elif word == "creating":
+        suffix = "-ing"
+        category = "Present Participle"
+        root = "create"
+
+    print("{:<15}{:<12}{:<25}{:<12}{:<15}".format(
+        word, suffix, category, root, root))
