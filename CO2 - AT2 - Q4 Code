@@ -1,0 +1,33 @@
+words = ["activate", "activation", "reactivation"]
+
+print("Morphological Parsing Report")
+print("-" * 120)
+print("{:<18}{:<10}{:<12}{:<10}{:<22}{:<20}{:<15}".format(
+    "Word", "Prefix", "Root", "Suffix",
+    "Derivational Sequence", "Meaning", "Normalized"))
+
+for word in words:
+
+    if word == "activate":
+        prefix = "-"
+        root = "activate"
+        suffix = "-"
+        sequence = "Base Verb"
+        meaning = "Make active"
+
+    elif word == "activation":
+        prefix = "-"
+        root = "activate"
+        suffix = "-ion"
+        sequence = "activate → activation"
+        meaning = "Process"
+
+    elif word == "reactivation":
+        prefix = "re"
+        root = "activate"
+        suffix = "-ion"
+        sequence = "re + activate + ion"
+        meaning = "Activate again"
+
+    print("{:<18}{:<10}{:<12}{:<10}{:<22}{:<20}{:<15}".format(
+        word, prefix, root, suffix, sequence, meaning, root))
