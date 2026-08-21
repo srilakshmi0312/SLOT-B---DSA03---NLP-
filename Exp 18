@@ -1,0 +1,10 @@
+expression = input("Enter a logical expression: ")
+
+if "(" in expression and ")" in expression:
+    predicate = expression[:expression.index("(")]
+    arguments = expression[expression.index("(")+1:expression.index(")")]
+
+    print("Predicate:", predicate)
+    print("Arguments:", arguments.split(","))
+else:
+    print("Invalid expression")
