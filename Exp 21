@@ -1,0 +1,23 @@
+import nltk
+
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger_eng')
+
+grammar = "NP: {<DT>?<JJ>*<NN.*>+}"
+
+chunk_parser = nltk.RegexpParser(grammar)
+
+sentence = input("Enter a sentence: ")
+
+words = nltk.word_tokenize(sentence)
+tags = nltk.pos_tag(words)
+
+tree = chunk_parser.parse(tags)
+
+print("Noun Phrases:")
+
+for subtree in tree.subtrees():
+    if subtree.label() == "NP":
+        print(" ".join(word for word, tag in subtree.leaves()))
