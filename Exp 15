@@ -1,0 +1,13 @@
+grammar = {
+    ("John", "runs"): 0.9,
+    ("Mary", "eats"): 0.8,
+    ("John", "eats"): 0.5
+}
+
+sentence = tuple(input("Enter a sentence: ").split())
+
+if sentence in grammar:
+    print("Sentence Accepted")
+    print("Probability =", grammar[sentence])
+else:
+    print("Sentence Rejected")
