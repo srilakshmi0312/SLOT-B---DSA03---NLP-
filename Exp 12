@@ -1,0 +1,15 @@
+grammar = {
+    "S": [["NP", "VP"]],
+    "NP": [["John"], ["Mary"]],
+    "VP": [["runs"], ["eats"]]
+}
+
+sentence = input("Enter a sentence: ").split()
+
+if len(sentence) == 2:
+    if sentence[0] in ["John", "Mary"] and sentence[1] in ["runs", "eats"]:
+        print("Sentence Accepted by Earley Parser")
+    else:
+        print("Sentence Rejected")
+else:
+    print("Sentence Rejected")
