@@ -1,0 +1,10 @@
+sentence = input("Enter a dialog: ")
+
+if sentence.endswith("?"):
+    print("Dialog Act: Question")
+elif sentence.lower().startswith(("please", "kindly")):
+    print("Dialog Act: Request")
+elif sentence.endswith("!"):
+    print("Dialog Act: Exclamation")
+else:
+    print("Dialog Act: Statement")
