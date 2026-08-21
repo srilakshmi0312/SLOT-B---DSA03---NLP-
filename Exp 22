@@ -1,0 +1,24 @@
+text = input("Enter a text: ")
+
+sentences = text.split(".")
+
+noun = ""
+
+for sentence in sentences:
+    words = sentence.strip().split()
+
+    if not words:
+        continue
+
+    if words[0].lower() not in ["he", "she", "it", "they"]:
+        noun = words[0]
+
+    resolved = []
+
+    for word in words:
+        if word.lower() in ["he", "she", "it", "they"]:
+            resolved.append(noun)
+        else:
+            resolved.append(word)
+
+    print("Resolved:", " ".join(resolved))
