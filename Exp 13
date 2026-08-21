@@ -1,0 +1,20 @@
+sentence = input("Enter a sentence: ").split()
+
+if sentence == ["John", "runs"]:
+    print("Parse Tree")
+    print("        S")
+    print("      /   \\")
+    print("    NP     VP")
+    print("    |      |")
+    print("  John   runs")
+
+elif sentence == ["Mary", "eats"]:
+    print("Parse Tree")
+    print("        S")
+    print("      /   \\")
+    print("    NP     VP")
+    print("    |      |")
+    print("  Mary   eats")
+
+else:
+    print("Sentence not in grammar")
