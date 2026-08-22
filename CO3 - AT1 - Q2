@@ -1,0 +1,54 @@
+from collections import Counter
+
+text = "the student is studying the student is reading the teacher is teaching the student the student is writing"
+words = text.split()
+
+uni = Counter(words)
+bi = Counter(zip(words, words[1:]))
+tri = Counter(zip(words, words[1:], words[2:]))
+
+total = len(words)
+
+def unigram(w):
+    return uni[w] / total
+
+def bigram(w1, w2):
+    return bi[(w1, w2)] / uni[w1] if uni[w1] else 0
+
+def trigram(w1, w2, w3):
+    return tri[(w1, w2, w3)] / bi[(w1, w2)] if bi[(w1, w2)] else 0
+
+def backoff(w1, w2, w3):
+    p = trigram(w1, w2, w3)
+    if p == 0:
+        p = bigram(w2, w3)
+    if p == 0:
+        p = unigram(w3)
+    return p
+
+def interpolation(w1, w2, w3):
+    return (0.2 * unigram(w3) +
+            0.3 * bigram(w2, w3) +
+            0.5 * trigram(w1, w2, w3))
+
+query = input("Enter sentence: ").lower().split()
+w1, w2 = query[-2], query[-1]
+
+candidates = set(words)
+results = []
+
+for w in candidates:
+    results.append((w, backoff(w1, w2, w)))
+
+results.sort(key=lambda x: x[1], reverse=True)
+
+print("\nBackoff Predictions:")
+for w, p in results[:5]:
+    print(w, round(p, 3))
+
+results = [(w, interpolation(w1, w2, w)) for w in candidates]
+results.sort(key=lambda x: x[1], reverse=True)
+
+print("\nDeleted Interpolation Predictions:")
+for w, p in results[:5]:
+    print(w, round(p, 3))
