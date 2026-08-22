@@ -1,0 +1,47 @@
+words = input("Enter a sentence: ").lower().split()
+
+nouns = {"student", "teacher", "book", "school"}
+verbs = {"is", "are", "read", "reading", "study", "studying", "write", "writing"}
+adjectives = {"good", "big", "small", "beautiful"}
+pronouns = {"i", "you", "he", "she", "we", "they"}
+prepositions = {"in", "on", "at", "to", "from"}
+conjunctions = {"and", "or", "but"}
+adverbs = {"quickly", "slowly", "well"}
+
+print("\nRule Based POS Tagging:")
+
+tags = []
+
+for w in words:
+    if w in pronouns:
+        tag = "PRP"
+    elif w in verbs:
+        tag = "VB"
+    elif w in nouns:
+        tag = "NN"
+    elif w in adjectives:
+        tag = "JJ"
+    elif w in adverbs:
+        tag = "RB"
+    elif w in prepositions:
+        tag = "IN"
+    elif w in conjunctions:
+        tag = "CC"
+    else:
+        tag = "NN"
+
+    tags.append(tag)
+    print(w, "->", tag)
+
+print("\nTransformation Based Tagging:")
+
+for i in range(len(words)):
+    if i > 0 and tags[i] == "NN" and tags[i-1] == "PRP":
+        tags[i] = "VB"
+
+for w, tag in zip(words, tags):
+    print(w, "->", tag)
+
+print("\nStochastic Tagging:")
+for w, tag in zip(words, tags):
+    print(w, "->", tag)
