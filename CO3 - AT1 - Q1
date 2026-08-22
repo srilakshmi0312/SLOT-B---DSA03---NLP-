@@ -1,0 +1,50 @@
+from collections import Counter
+
+text = "the student is studying the student is reading the teacher is teaching the student the student is writing"
+
+words = text.lower().split()
+
+unigram = Counter(words)
+bigram = Counter(zip(words, words[1:]))
+trigram = Counter(zip(words, words[1:], words[2:]))
+
+print("1. Unigram")
+print("2. Bigram")
+print("3. Trigram")
+
+n = int(input("Enter N: "))
+
+if n == 1:
+    for w, c in unigram.items():
+        print(w, c, round(c / len(words), 3))
+
+elif n == 2:
+    for (w1, w2), c in bigram.items():
+        print(w1, w2, c, round(c / unigram[w1], 3))
+
+elif n == 3:
+    for (w1, w2, w3), c in trigram.items():
+        print(w1, w2, w3, c, round(c / bigram[(w1, w2)], 3))
+
+sentence = input("Enter incomplete sentence: ").lower().split()
+
+if n == 2:
+    last = sentence[-1]
+    result = [(w2, c / unigram[last]) for (w1, w2), c in bigram.items() if w1 == last]
+
+elif n == 3:
+    last = tuple(sentence[-2:])
+    result = [(w3, c / bigram[last]) for (w1, w2, w3), c in trigram.items()
+              if (w1, w2) == last]
+
+else:
+    result = [(w, c / len(words)) for w, c in unigram.items()]
+
+result.sort(key=lambda x: x[1], reverse=True)
+
+print("Top 5 predictions:")
+for word, p in result[:5]:
+    print(word, round(p, 3))
+
+print("Unseen bigram probability:",
+      bigram[("student", "teacher")] / unigram["student"])
